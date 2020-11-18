@@ -3,6 +3,7 @@ from flask import request
 from flask_material import Material
 
 app = Flask(__name__)
+Material(app)
 
 
 @app.route('/', methods=['GET', 'POST'])

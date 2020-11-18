@@ -2,6 +2,8 @@ from flask import Flask, render_template
 from flask import request
 from flask_material import Material
 
+from executer import executer
+
 app = Flask(__name__)
 Material(app)
 
@@ -9,7 +11,11 @@ Material(app)
 @app.route('/', methods=['GET', 'POST'])
 def main():
     if request.method == 'POST':
-        return 'POST'
+        code = request.form['code']
+        print("CÓDIGO:\n",code)
+        printed = executer(code)
+        print("RESULTADO:\n",printed)
+        return render_template('index.html',result=printed)
     else:
         return render_template('index.html')
 

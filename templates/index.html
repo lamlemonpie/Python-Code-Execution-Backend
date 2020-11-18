@@ -49,12 +49,31 @@
   <!-- 
   -->
   <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-  <div class="imgbox">
-    <a  href="/">
-      <img class="center-fit" src="../static/google.png" /> 
-      <p> Motor de Busqueda para el curso de Cloud Computing - 2020 </p>
-     </a>
+
+
+  <div class="container" >
+    <form action='/' method="POST" >
+
+      <textarea id="code" name="code"  class="materialize-textarea"></textarea>
+      
+  
+      <button class="btn waves-effect waves-light" type="submit" value="submit" name="action" >  Ejecutar
+        <i class="material-icons right"> </i>
+      </button>
+  
+    </form>
+
   </div>
+ 
+  <div class="row spacer container" >
+    {% if result%}
+    <p class="center-align">  <B>{{result}}</B> </p>
+    {% else %}
+    <p class="center-align"> No ejecutado </p>
+    {% endif %}
+  </div>
+
+
 </body>
 
 </html>

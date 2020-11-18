@@ -1,16 +1,22 @@
 import sys
+import io
 
-def executer(code,output):
-    sys.stdout = open(output, "w")
+def executer(code):
+    old_stdout = sys.stdout
+    new_stdout = io.StringIO()
+    sys.stdout = new_stdout
+
     exec(code)
-    sys.stdout.close()
+
+    output = new_stdout.getvalue()
+
+    sys.stdout = old_stdout
+    return output
 
 
 code = '''
 for i in range(0,10):
     print(i)
 '''
-output = "output.txt"
 
-executer(code, output)
 

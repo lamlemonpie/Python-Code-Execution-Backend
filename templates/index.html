@@ -17,17 +17,19 @@
   }
 
   .waves-effect {
-    background: #2ECC71;
+    float: left;
+    width: 300px;
+    height: 50px;
+    background: #FA4E1F;
   }
 
   .waves-light {
-    background: #2ECC71;
+    background: #FA4E1F;
   }
 
   .highlight {
     background: #EAECEE;
   }
-
 
   * {
         margin: 0;
@@ -48,60 +50,111 @@
     padding:10px;
   }
 
-  .sized-textarea {
-  width: 800px;
-  height: 400px;
-  padding: 20px;
-  margin-bottom: 20px;
-  outline: none !important;
-  border:1px solid red;
-  box-shadow: 0 0 10px #719ECE;
-}
-
-  .colored-div{
-    background-color: #DCDCDC;
+  .contenedor{
+    padding: 10px;
   }
 
- 
+  .sized-textarea {
+    float: left;
+    width: 500px;
+    height: 400px;
+    padding: 20px;
+    margin: 6px;
+    outline: none !important;
+    border:1.5px solid #9B9796;
+    box-shadow: 0 0 10px #719ECE;
+    
+    padding: 10px;
+    background: #c8d7dc;
+    background: -moz-linear-gradient(top,  #c8d7dc 0%, #e3eaed 63%, #f2f5f6 100%);
+    background: -webkit-linear-gradient(top,  #c8d7dc 0%,#e3eaed 63%,#f2f5f6 100%);
+    background: linear-gradient(to bottom,  #c8d7dc 0%,#e3eaed 63%,#f2f5f6 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c8d7dc', endColorstr='#f2f5f6',GradientType=0 );
+  }
+
+  .colored-div{
+    float: left;
+    width: 500px;
+    height: 400px;
+    padding: 20px;
+    margin: 6px;
+    outline: none !important;
+    border:1.5px solid #9B9796;
+    box-shadow: 0 0 10px #719ECE;
+    
+    padding: 10px;
+    background: #c8d7dc;
+    background: -moz-linear-gradient(top,  #c8d7dc 0%, #e3eaed 63%, #f2f5f6 100%);
+    background: -webkit-linear-gradient(top,  #c8d7dc 0%,#e3eaed 63%,#f2f5f6 100%);
+    background: linear-gradient(to bottom,  #c8d7dc 0%,#e3eaed 63%,#f2f5f6 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c8d7dc', endColorstr='#f2f5f6',GradientType=0 );
+  }
+
+  .fondo-degradado{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 0.8em;
+    background-color: green;
+    background: #ffd65e;
+    background: -moz-linear-gradient(left,  #ffd65e 0%, #febf04 100%);
+    background: -webkit-linear-gradient(left,  #ffd65e 0%,#febf04 100%);
+    background: linear-gradient(to right,  #ffd65e 0%,#febf04 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd65e', endColorstr='#febf04',GradientType=1 );
+  }
+
+  .imgbox {
+      display: grid;
+      height: 80%;
+  }
+
 
 </style>
 
-<body align="center" >
-  <!-- 
+<body class="fondo-degradado">
+  <!--    margin-bottom: 25px;
   -->
-  <br> <br> <br>
+  <br> 
 
+  <div class="imgbox">
+    <a  href="/">
+      <img class="center-fit" src="../static/title2.png" /> 
+     </a>
+  </div>
+
+  <br> <br> <br> <br> <br> 
 
   <div class="container" >
-    <form action='/' method="POST" >
+    <h4 
+      class="header">
+      <font face="Courier" size="6" </font> 
+      <b></b>
+      </h4>
 
-      <h4 class="header">Interpretador Python</h4>
-      
+    <form action='/' method="POST" >
+    <br> <br>
       {% if coded%}
       <textarea rows = "50" cols = "60" id="code" name="code"  class="sized-textarea">{{ coded }}</textarea>
       {% else %}
       <textarea rows = "50" cols = "60" id="code" name="code"  class="sized-textarea"></textarea>
       {% endif %}
-  
-      <button class="btn waves-effect waves-light" type="submit" value="submit" name="action" >  Ejecutar
+     
+     <button class="btn waves-effect waves-light" type="submit" value="submit" name="action" >  Ejecutar
         <i class="small material-icons">build</i>
       </button>
-  
-    </form>
 
+    </form>
   </div>
  
-  <div class="row spacer colored-div container " >
+  <div class="row spacer colored-div container ">
     {% if result%}
     <p class="center-align">  {{result}} </p>
     {% else %}
-    <p class="center-align"> No ejecutado </p>
+    <p class="center-align"> No ejecutado: SyntaxError</p>
     {% endif %}
   </div>
 
 
 </body>
-
 </html>
-
 {% endblock %}

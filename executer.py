@@ -6,7 +6,7 @@ def executer(code):
     new_stdout = io.StringIO()
     sys.stdout = new_stdout
 
-    exec(code)
+    exec(code, globals(), globals())
 
     output = new_stdout.getvalue()
 

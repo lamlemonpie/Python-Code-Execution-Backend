@@ -116,6 +116,14 @@ Kubernetes representa las aplicaciones como Pods, que son unidades escalables qu
 Creamos una implementación de Kubernetes para ejecutar Executer en el clúster. Esta implementación tendrá 3 réplicas (Pods). Un Pod de la implementación contendrá solo un contenedor: la imagen de Docker de execute}. También crearemos un recurso HorizontalPodAutoscaler que escalará la cantidad de Pods de 3 a un número entre 1 y 5, en función de la carga de CPU. En caso no haya una carga elevada, los pods no utilizados serán desactivados.
 ![bd_disponibles](output/10.png)
 
+Si bien los Pods tienen direcciones IP asignadas de forma individual, solo se puede acceder a estas desde el interior del clúster. Además, los Pods de GKE están diseñados para ser efímeros y disminuir o aumentar en función de las necesidades de escalamiento. Cuando un Pod falla debido a un error, GKE volverá a implementarlo de forma automática y le asignará una dirección IP nueva cada vez que esto suceda.
+
+Esto significa que, en cualquier implementación, el conjunto de direcciones IP correspondiente al conjunto activo de Pods es dinámico. Necesitamos una forma de: 1) agrupar los Pods en un nombre de host estático y 2) exponer un grupo de Pods fuera del clúster a la Internet.
+
+Los Servicios de Kubernetes resuelven estos dos problemas. Los servicios agrupan los Pods en una dirección IP estática, a la que se puede acceder desde cualquier Pod dentro del clúster. GKE también asigna un nombre de host de DNS a esa IP estática: por ejemplo, hello-app.default.svc.cluster.local.
+
+El tipo de servicio predeterminado en GKE se llama ClusterIP. En este tipo, el servicio obtiene una dirección IP a la que solo se puede acceder desde interior del clúster. Para exponer un servicio de Kubernetes fuera del clúster, deberemos crear un servicio de tipo LoadBalancer. Este tipo de servicio genera una IP del balanceador de cargas externo para un conjunto de Pods, a la que se puede acceder a través de Internet.
+![bd_disponibles](output/11.png)
 
 Finalmente accedemos la dirección EXTERNAL\_IP  (por ejemplo, 34.95.142.156) y podremos ejecutar la aplicación Executer:
 

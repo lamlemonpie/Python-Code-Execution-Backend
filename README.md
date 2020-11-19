@@ -73,10 +73,10 @@ if __name__=='__main__':
 Ahora es turno de desplegar el proyecto a un contenedor, para esto debemos empaquetarlo en un contenedor de Docker y posteriormente ejecutar esa imagen en un clúster, en este caso utilizaremos Google Kubernetes Engine (GKE).
 
 Desde la Google Cloud Console lo primero que hay que hacer es obtener el proyecto, en este caso desde GitHub. 
-![bd_disponibles](output/1.png)
+![bd_disponibles](output/01.png)
 
 Una vez hayamos descargado el proyecto, creamos el archivo Dockerfile donde especificaremos las librerias requeridas. Luego compilamos y etiquetamos la imagen de Docker Executer. Verificamos que la imagen haya sido creado:
-![bd_disponibles](output/2.png)
+![bd_disponibles](output/02.png)
 
 ```
 FROM python:3.7
@@ -87,28 +87,28 @@ ENTRYPOINT ["python3"]
 CMD ["executerUI.py"]
 ```
 
-![bd_disponibles](output/3.png)
+![bd_disponibles](output/03.png)
 
 Para probar que la imagen funcione correctamente la ejecutamos bajo el puerto 8080 mediante el motor de Docker local. 
-![bd_disponibles](output/4.png)
+![bd_disponibles](output/04.png)
 
 Visualizamos mediante el navegador web.
-![bd_disponibles](output/resultado1.png)
+![bd_disponibles](output/resultado1.PNG)
 
 ### Envio de imagen de Doker a Conteiner Registry
 Se debe subir la imagen de contenedor a un registro para que el clúster de GKE pueda descargarla y ejecutarla. Debemos configurar la herramienta de línea de comandos de Docker se autentique en Container Registry y posteriormente enviar la imagen de Docker que acabamos de compilar a Container Registry.
-![bd_disponibles](output/6.png)
+![bd_disponibles](output/06.png)
 
-![bd_disponibles](output/7.png)
+![bd_disponibles](output/07.png)
 
 ### Creación del Clúster GKE
 Ahora que la imagen de Docker está almacenada en Container Registry, debemos crear un clúster de GKE para ejecutar Executer. Un clúster de GKE consiste en un grupo de instancias de VM de Compute Engine que ejecutan Kubernetes, el sistema de organización de clústeres de código abierto que se usa en GKE.
 
 Primero debemos configurar las opciones del ID del proyecto y de la zona de Compute Engine para la herramienta de gcloud, posteriormente creamos el clúster executer-cluster.
-![bd_disponibles](output/8.png)
+![bd_disponibles](output/08.png)
 
 Una vez que se complete el comando, ya podremos ver las tres instancias de VM de trabajador del clúster:
-![bd_disponibles](output/9.png)
+![bd_disponibles](output/09.png)
 
 ### Implementación de la app en GKE
 Kubernetes representa las aplicaciones como Pods, que son unidades escalables que contienen uno o más contenedores. Un Pod es la unidad más pequeña que se puede implementar en Kubernetes. Por lo general, implementas los Pods como un conjunto de réplicas que se pueden escalar y distribuir juntas en el clúster. Una forma de implementar un conjunto de réplicas es mediante una implementación de Kubernetes.
@@ -118,5 +118,5 @@ Creamos una implementación de Kubernetes para ejecutar Executer en el clúster.
 
 
 Finalmente accedemos la dirección EXTERNAL\_IP  (por ejemplo, 34.95.142.156) y podremos ejecutar la aplicación Executer:
-![bd_disponibles](output/resultado2.png)
-![bd_disponibles](output/resultado3.png)
+![bd_disponibles](output/resultado2.PNG)
+![bd_disponibles](output/resultado3.PNG)

@@ -118,5 +118,7 @@ Creamos una implementación de Kubernetes para ejecutar Executer en el clúster.
 
 
 Finalmente accedemos la dirección EXTERNAL\_IP  (por ejemplo, 34.95.142.156) y podremos ejecutar la aplicación Executer:
+
 ![bd_disponibles](output/resultado2.PNG)
+
 ![bd_disponibles](output/resultado3.PNG)

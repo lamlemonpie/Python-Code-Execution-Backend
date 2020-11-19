@@ -76,8 +76,12 @@
     <form action='/' method="POST" >
 
       <h4 class="header">Interpretador Python</h4>
-      <textarea rows = "50" cols = "60" id="code" name="code"  class="sized-textarea"></textarea>
       
+      {% if coded%}
+      <textarea rows = "50" cols = "60" id="code" name="code"  class="sized-textarea">{{ coded }}</textarea>
+      {% else %}
+      <textarea rows = "50" cols = "60" id="code" name="code"  class="sized-textarea"> </textarea>
+      {% endif %}
   
       <button class="btn waves-effect waves-light" type="submit" value="submit" name="action" >  Ejecutar
         <i class="small material-icons">build</i>

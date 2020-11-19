@@ -15,7 +15,7 @@ def main():
         print("CÓDIGO:\n",code)
         printed = executer(code)
         print("RESULTADO:\n",printed)
-        return render_template('index.html',result=printed)
+        return render_template('index.html',result=printed,coded=code)
     else:
         return render_template('index.html')
 

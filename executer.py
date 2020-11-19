@@ -12,8 +12,3 @@ def executer(code):
 
     sys.stdout = old_stdout
     return output
-
-
-
-
-

@@ -14,9 +14,6 @@ def executer(code):
     return output
 
 
-code = '''
-for i in range(0,10):
-    print(i)
-'''
+
 
 

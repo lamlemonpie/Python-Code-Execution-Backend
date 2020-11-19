@@ -4,7 +4,11 @@
 
 <html>
 <head>
-    <title>Resultados</title>
+    <title>Interpretador Python</title>
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <style>
@@ -40,34 +44,52 @@
   }
 
   .spacer{
-    padding-top:20px;
+    margin-top: 20px;
+    padding:10px;
   }
+
+  .sized-textarea {
+  width: 800px;
+  height: 400px;
+  padding: 20px;
+  margin-bottom: 20px;
+  outline: none !important;
+  border:1px solid red;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+  .colored-div{
+    background-color: #DCDCDC;
+  }
+
+ 
 
 </style>
 
 <body align="center" >
   <!-- 
   -->
-  <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+  <br> <br> <br>
 
 
   <div class="container" >
     <form action='/' method="POST" >
 
-      <textarea id="code" name="code"  class="materialize-textarea"></textarea>
+      <h4 class="header">Interpretador Python</h4>
+      <textarea rows = "50" cols = "60" id="code" name="code"  class="sized-textarea"></textarea>
       
   
       <button class="btn waves-effect waves-light" type="submit" value="submit" name="action" >  Ejecutar
-        <i class="material-icons right"> </i>
+        <i class="small material-icons">build</i>
       </button>
   
     </form>
 
   </div>
  
-  <div class="row spacer container" >
+  <div class="row spacer colored-div container " >
     {% if result%}
-    <p class="center-align">  <B>{{result}}</B> </p>
+    <p class="center-align">  {{result}} </p>
     {% else %}
     <p class="center-align"> No ejecutado </p>
     {% endif %}

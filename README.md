@@ -2,11 +2,11 @@
 Web para ejecutar código Python 
 
 - Profesor: 
-Dr. Alvaro Henry Mamani Aliaga 
+    - Dr. Alvaro Henry Mamani Aliaga 
 
 - Estudiantes: 
-Hayde Luzmila Humpire Cutipa
-Larraondo Lamchog Alejandro Jesus 
+    - Hayde Luzmila Humpire Cutipa
+    - Larraondo Lamchog Alejandro Jesus 
 
 ## Requerimientos para la implementación
 Los pasos que vamos a seguir para la implementación de nuestro  intepretador de python:
